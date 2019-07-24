@@ -13,8 +13,8 @@ class CreateRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('Roles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->bigIncrements('id')->unsigned();
             $table->string('role');
             $table->integer('fixed_salary',false,true);
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Roles');
+        Schema::dropIfExists('roles');
     }
 }

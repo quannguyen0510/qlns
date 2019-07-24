@@ -13,9 +13,10 @@ class CreateTableDayoffs extends Migration
      */
     public function up()
     {
-        Schema::create('DayOffs', function (Blueprint $table) {
-            $table->bigInteger('id_user');
+        Schema::create('dayOffs', function (Blueprint $table) {
+            $table->bigInteger('id_user')->unsigned();
             $table->timestamp('time_off');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -26,6 +27,6 @@ class CreateTableDayoffs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('DayOffs');
+        Schema::dropIfExists('dayOffs');
     }
 }

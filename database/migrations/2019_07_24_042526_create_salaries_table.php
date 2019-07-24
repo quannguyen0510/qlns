@@ -14,7 +14,7 @@ class CreateSalariesTable extends Migration
     public function up()
     {
         Schema::create('salaries', function (Blueprint $table) {
-            $table->unsignedInteger('id_user');
+            $table->unsignedBigInteger('id_user');
             $table->unsignedInteger('year');
             $table->unsignedInteger('month');
             $table->integer('day_worked');
@@ -22,6 +22,7 @@ class CreateSalariesTable extends Migration
             $table->integer('total');
             $table->string('checklist');
             $table->primary(['id_user', 'year', 'month']);
+            $table->foreign('id_user')->references('id')->on('users');
             $table->timestamps();
         });
     }

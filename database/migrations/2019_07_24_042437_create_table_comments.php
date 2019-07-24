@@ -13,11 +13,13 @@ class CreateTableComments extends Migration
      */
     public function up()
     {
-        Schema::create('Comments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('id_user');
-            $table->bigInteger('id_news');
+        Schema::create('comments', function (Blueprint $table) {
+            $table->bigIncrements('id')->unsigned();
+            $table->bigInteger('id_user')->unsigned();
+            $table->bigInteger('id_news')->unsigned();
             $table->string('comment');
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_news')->references('id')->on('news');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateTableComments extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Comments');
+        Schema::dropIfExists('comments');
     }
 }

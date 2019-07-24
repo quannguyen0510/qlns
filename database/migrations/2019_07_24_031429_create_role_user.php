@@ -13,9 +13,11 @@ class CreateRoleUser extends Migration
      */
     public function up()
     {
-        Schema::create('Role_User', function (Blueprint $table) {
-            $table->integer('id_user',false,false);
-            $table->integer('id_role',false,false);
+        Schema::create('role_user', function (Blueprint $table) {
+            $table->bigInteger('id_user')->unsigned();
+            $table->bigInteger('id_role')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_role')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateRoleUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Role_User');
+        Schema::dropIfExists('role_user');
     }
 }
