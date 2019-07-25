@@ -19,7 +19,3 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('trang-chu','LayoutController@index');
-
-Route::group(['prefix'=>'news', 'middleware'=>'auth'], function () {
-    Route::get('list', 'NewsController@index')->name('list');
-});
