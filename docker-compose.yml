@@ -63,6 +63,7 @@ services:
             - logs
         expose:
             - "3306"
+        command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_DATABASE: homestead
             MYSQL_USER: homestead
