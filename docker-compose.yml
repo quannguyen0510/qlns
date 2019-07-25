@@ -56,13 +56,13 @@ services:
             - .docker/logs/mongodb:/var/log/mongodb
     mysql:
         container_name: qlns_mysql
-        restart: always
         image: mysql
         volumes_from:
             - data
             - logs
         expose:
             - "3306"
+        command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_DATABASE: homestead
             MYSQL_USER: homestead
