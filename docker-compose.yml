@@ -56,7 +56,6 @@ services:
             - .docker/logs/mongodb:/var/log/mongodb
     mysql:
         container_name: qlns_mysql
-        restart: always
         image: mysql
         volumes_from:
             - data
