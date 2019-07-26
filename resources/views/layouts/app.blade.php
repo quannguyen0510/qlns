@@ -79,7 +79,7 @@
 {{--</body>--}}
 {{--</html>--}}
         <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html  lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -271,7 +271,10 @@
         <!-- /top navigation -->
 
         <!-- page content -->
+
+    <div class="right_col" id="app" role="main">
         @yield('content')
+    </div>
         <!-- /page content -->
 
         <!-- footer content -->
@@ -290,7 +293,7 @@
 <!-- Bootstrap -->
 <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
 <!-- Custom Theme Scripts -->
-<script src="{{ asset('build/js/custom.min.js"') }}></script>
-
+<script src="{{ asset('build/js/custom.min.js') }}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
