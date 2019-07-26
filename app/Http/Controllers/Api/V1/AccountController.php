@@ -16,7 +16,7 @@ class AccountController extends Controller
     public function index()
     {
         //
-        return User::all();
+        return User::all(['id','name','email','phone']);
     }
 
     /**
@@ -38,6 +38,10 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
+        $account = User::create($data);
+        return $account;
     }
 
     /**
