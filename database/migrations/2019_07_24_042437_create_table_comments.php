@@ -14,7 +14,7 @@ class CreateTableComments extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->Increments('id')->unsigned();
+            $table->increments('id');
             $table->unsignedInteger('id_user');
             $table->unsignedInteger('id_news');
             $table->string('comment');

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
     protected $table = "news";
+    protected $fillable = ['title', 'content', 'posted_by', 'created_at'];
     public  $timestamps = false;
 
     public function comments() {
@@ -18,3 +19,4 @@ class News extends Model
     }
 }
 ?>
+

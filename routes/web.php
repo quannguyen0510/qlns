@@ -23,4 +23,11 @@ Route::prefix('/admin')->group(function(){
     Route::resource('/account', 'AccountController')->only(['index', 'create', 'edit']);
 });
 
-?>
+Route::get('trang-chu', 'LayoutController@index');
+
+Route::group(['prefix' => 'news', 'middleware' => 'auth'], function () {
+    Route::get('index', 'NewsController@index')->name('news.index');
+    Route::get('edit/{id}', 'NewsController@edit')->name('news.edit');
+    Route::get('create', 'NewsController@create')->name('news.create');
+    Route::get('json', 'NewsController@getJson')->name('news.json');
+});

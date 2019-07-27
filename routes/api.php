@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::resource('account', 'AccountController', ['except' => ['create', 'edit']]);
+    Route::resource('news', 'NewsController', ['except' => ['create', 'edit']]);
 });
-?>
