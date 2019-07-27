@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\Account;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -16,7 +17,8 @@ class AccountController extends Controller
     public function index()
     {
         //
-        return User::all();
+        
+        return Account::all(['id','name','email','phone']);
     }
 
     /**
@@ -38,6 +40,17 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->all('name','email','phone','password');
+        $account = new Account;
+        $account->fill([
+            'name'=>$data['name'],
+            'phone'=>$data['phone'],
+            'email'=>$data['email'],
+            'password'=> bcrypt($data['password']),
+            'avatar'=>''
+        ]);
+        $account->save();
+        return $account;
     }
 
     /**
@@ -83,5 +96,7 @@ class AccountController extends Controller
     public function destroy($id)
     {
         //
+        Account::destroy($id);
+        return '';
     }
 }
