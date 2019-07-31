@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('trang-chu','LayoutController@index');
+
+Route::prefix('/admin')->group(function(){
+    Route::resource('/account', 'AccountController')->only(['index', 'create', 'edit']);
+});
+
+?>
