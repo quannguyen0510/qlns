@@ -5,9 +5,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">News</div>
                     <div class="panel-body table-responsive">
-                        <news-edit></news-edit>
+                        <news-index></news-index>
                     </div>
                 </div>
             </div>
