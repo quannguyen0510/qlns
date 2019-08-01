@@ -14,7 +14,7 @@ class CreateSalariesTable extends Migration
     public function up()
     {
         Schema::create('salaries', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedInteger('id_user');
             $table->unsignedInteger('year');
             $table->unsignedInteger('month');
             $table->integer('day_worked');

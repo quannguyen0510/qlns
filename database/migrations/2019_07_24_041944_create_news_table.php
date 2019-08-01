@@ -14,10 +14,10 @@ class CreateNewsTable extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
+            $table->increments('id');
             $table->string('title');
             $table->mediumText('content');
-            $table->unsignedBigInteger('posted_by');
+            $table->unsignedInteger('posted_by');
             $table->timestamps();
             $table->foreign('posted_by')->references('id')->on('users');
         });
