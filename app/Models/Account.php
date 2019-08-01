@@ -40,8 +40,8 @@ class Account extends Model
         return $this->hasMany(News::class, 'posted_by', 'id');
     }
 
-    public function userRoles() {
-        return $this->hasMany(RoleUser::class, 'id_user', 'id');
+    public function roles() {
+        return $this->belongsTo(Role::class, 'id_role', 'id');
     }
 
     public function dayoffs() {

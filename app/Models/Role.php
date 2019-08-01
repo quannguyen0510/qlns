@@ -9,8 +9,8 @@ class Role extends Model
     protected $table = "roles";
     public  $timestamps = false;
 
-    public function user_role() {
-        return $this->hasMany(RoleUser::class, 'id_role', 'id');
+    public function users() {
+        return $this->hasMany(Account::class, 'id_role', 'id');
     }
 }
 ?>

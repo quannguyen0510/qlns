@@ -20,9 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('phone')->default('');
             $table->string('avatar')->default('');
+            $table->unsignedInteger('id_role')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('users', function($table) {
+            $table->foreign('id_role')->references('id')->on('roles')->onDelete('set null');
         });
     }
 
