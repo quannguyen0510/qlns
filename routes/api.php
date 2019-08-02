@@ -19,5 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1', 'as' => 'api.'], function () {
     Route::resource('account', 'AccountController', ['except' => ['create', 'edit']]);
+    Route::post('account/role','AccountController@updateRole')->name('account.role.update');
     Route::resource('news', 'NewsController', ['except' => ['create', 'edit']]);
+    Route::resource('role', 'RoleController', ['except' => ['create', 'edit']]);
 });

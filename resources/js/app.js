@@ -22,16 +22,19 @@ Vue.mixin({
             editAccount(id){
                 return laroute.route('account.edit',{account:id})
             },
+            accounts: laroute.route('api.account.index'),
             storeAccount: laroute.route('api.account.store'),
             updateAccount(id){
                 return laroute.route('api.account.update',{account:id})
             },
+            updateAccountRole: laroute.route('api.account.role.update'),
             deleteAccount(id){
                 return laroute.route('api.account.destroy',{account:id})
             },
             getAccount(id){
                 return laroute.route('api.account.show',{account:id})
-            }
+            },
+            roleManager: laroute.route('admin.role.dashboard')
         }
     }
 })
@@ -45,6 +48,7 @@ Vue.component('news-index', require('./components/news/newsIndex.vue').default);
 Vue.component('news-edit', require('./components/news/NewsEdit.vue').default);
 Vue.component('news-create', require('./components/news/NewsCreate.vue').default);
 
+Vue.component('role-index',require('./components/role/IndexComponent').default)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
