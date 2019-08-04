@@ -47,6 +47,7 @@ Vue.component('account-edit',require('./components/account/EditAccount.vue').def
 Vue.component('news-index', require('./components/news/newsIndex.vue').default);
 Vue.component('news-edit', require('./components/news/NewsEdit.vue').default);
 Vue.component('news-create', require('./components/news/NewsCreate.vue').default);
+Vue.component('news-detail', require('./components/news/NewsDetail.vue').default);
 
 Vue.component('role-index',require('./components/role/IndexComponent').default)
 /**

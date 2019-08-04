@@ -21,5 +21,6 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1', 'as' => 'api.'], funct
     Route::resource('account', 'AccountController', ['except' => ['create', 'edit']]);
     Route::post('account/role','AccountController@updateRole')->name('account.role.update');
     Route::resource('news', 'NewsController', ['except' => ['create', 'edit']]);
+    Route::resource('comment', 'CommentController', ['except' => ['create', 'edit']]);
     Route::resource('role', 'RoleController', ['except' => ['create', 'edit']]);
 });
