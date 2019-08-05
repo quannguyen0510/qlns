@@ -26,8 +26,11 @@
                         <td>{{ nws.users.name }}</td>
                         <td>{{ nws.created_at }}</td>
                         <td>
-                            <a v-bind:href="edit + '/' + nws.id" class="btn btn-xs btn-default">
+                            <a v-bind:href="edit(nws.id)" class="btn btn-xs btn-default">
                                 Edit
+                            </a>
+                            <a v-bind:href="detail(nws.id)" class="btn btn-xs btn-primary">
+                                Detail
                             </a>
                             <a href="#"
                                class="btn btn-xs btn-danger"
@@ -49,7 +52,12 @@
             return {
                 news: [],
                 create: laroute.route('news.create'),
-                edit: laroute.route('news.edit')
+                edit(id){
+                    return laroute.route('news.edit', {id:id})
+                },
+                detail(id){
+                    return laroute.route('news.detail', {id:id})
+                }
             }
         },
         mounted() {

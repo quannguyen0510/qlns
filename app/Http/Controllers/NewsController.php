@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Models\News;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -15,7 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $this->authorize('viewAny', News::class);
         return view('news.index');
     }
 
@@ -26,7 +27,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', News::class);
         return view('news.create');
     }
 
@@ -60,8 +61,8 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
-
+        $news = News::find($id);
+        $this->authorize('update', $news);
         return view('news.edit');
     }
 
@@ -88,10 +89,24 @@ class NewsController extends Controller
         //
     }
 
+    public function detail($id)
+    {
+        $news = News::find($id);
+        $this->authorize('view', $news);
+        return view('news.detail');
+    }
+
     public function getJson()
     {
         $user = User::all();
         return response()->json($user, 200);
+    }
+
+    public function getComment($id)
+    {
+        $comment = News::find($id);
+        $user = Auth::user();
+        return response()->json([$comment, $user], 200);
     }
 }
 ?>
