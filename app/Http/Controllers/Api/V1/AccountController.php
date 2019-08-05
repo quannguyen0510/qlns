@@ -2,8 +2,9 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Models\Account;
-use App\Http\Requests\StoreAccount;
+use App\Http\Requests\Account\StoreAccount;
+use App\Http\Requests\Account\UpdateAccount;
+use App\Http\Requests\Account\UpdateRole;
 use App\Repositories\AccountRepository;
 
 class AccountController extends Controller
@@ -55,7 +56,7 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreAccount $request, $id)
+    public function update(UpdateAccount $request, $id)
     {
         $data = $request->all('name', 'email', 'phone', 'password');
         $result = $this->accountRepository->update($id,$data);
@@ -70,6 +71,12 @@ class AccountController extends Controller
     public function destroy($id)
     {
         $this->accountRepository->delete($id);
+    }
+
+    public function updateRole(UpdateRole $request){
+        $data  = $request->only(['id','id_role']);
+        $result = $this->accountRepository->update($data['id'],$data);
+        return $result;
     }
 }
 ?>

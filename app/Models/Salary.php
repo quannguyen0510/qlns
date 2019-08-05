@@ -10,7 +10,7 @@ class Salary extends Model
     public  $timestamps = false;
     
     public function salaries() {
-        return $this->hasMany(Account::class, 'id_user', 'id');
+        return $this->belongsTo(Account::class, 'id_user', 'id');
     }
 }
 ?>
