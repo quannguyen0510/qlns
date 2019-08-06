@@ -6,6 +6,7 @@ use App\Http\Requests\Account\StoreAccount;
 use App\Http\Requests\Account\UpdateAccount;
 use App\Http\Requests\Account\UpdateRole;
 use App\Repositories\AccountRepository;
+use Illuminate\Support\Facades\Input;
 
 class AccountController extends Controller
 {
@@ -34,9 +35,16 @@ class AccountController extends Controller
      */
     public function store(StoreAccount $request)
     {
-        $data = array_only($request->toArray(), ['name', 'phone', 'email', 'password']);
-        $result = $this->accountRepository->create($data);
-        return $result;
+        $data = $request->all();
+        if($request->hasFile('avatar')) {
+            $file = Input::file('avatar');
+            $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+            $name = $timestamp. '-' .$file->getClientOriginalExtension();
+            $data['avatar'] = $name;
+            $file->move('public/images/', $name);
+        }
+        $account = $this->accountRepository->create($data);
+        return $account;
     }
 
     /**

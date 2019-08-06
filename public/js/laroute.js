@@ -6,13 +6,211 @@
 
             absolute: false,
             rootUrl: 'http://localhost',
-            routes : [{"host":null,"methods":["GET","HEAD"],"uri":"api\/user","name":null,"action":"Closure"},{"host":null,"methods":["GET","HEAD"],"uri":"api\/v1\/account","name":"api.account.index","action":"App\Http\Controllers\Api\V1\AccountController@index"},{"host":null,"methods":["POST"],"uri":"api\/v1\/account","name":"api.account.store","action":"App\Http\Controllers\Api\V1\AccountController@store"},{"host":null,"methods":["GET","HEAD"],"uri":"api\/v1\/account\/{account}","name":"api.account.show","action":"App\Http\Controllers\Api\V1\AccountController@show"},{"host":null,"methods":["PUT","PATCH"],"uri":"api\/v1\/account\/{account}","name":"api.account.update","action":"App\Http\Controllers\Api\V1\AccountController@update"},{"host":null,"methods":["DELETE"],"uri":"api\/v1\/account\/{account}","name":"api.account.destroy","action":"App\Http\Controllers\Api\V1\AccountController@destroy"},{"host":null,"methods":["GET","HEAD"],"uri":"api\/v1\/news","name":"api.news.index","action":"App\Http\Controllers\Api\V1\NewsController@index"},{"host":null,"methods":["POST"],"uri":"api\/v1\/news","name":"api.news.store","action":"App\Http\Controllers\Api\V1\NewsController@store"},{"host":null,"methods":["GET","HEAD"],"uri":"api\/v1\/news\/{news}","name":"api.news.show","action":"App\Http\Controllers\Api\V1\NewsController@show"},{"host":null,"methods":["PUT","PATCH"],"uri":"api\/v1\/news\/{news}","name":"api.news.update","action":"App\Http\Controllers\Api\V1\NewsController@update"},{"host":null,"methods":["DELETE"],"uri":"api\/v1\/news\/{news}","name":"api.news.destroy","action":"App\Http\Controllers\Api\V1\NewsController@destroy"},{"host":null,"methods":["GET","HEAD"],"uri":"\/","name":null,"action":"Closure"},{"host":null,"methods":["GET","HEAD"],"uri":"login","name":"login","action":"App\Http\Controllers\Auth\LoginController@showLoginForm"},{"host":null,"methods":["POST"],"uri":"login","name":null,"action":"App\Http\Controllers\Auth\LoginController@login"},{"host":null,"methods":["POST"],"uri":"logout","name":"logout","action":"App\Http\Controllers\Auth\LoginController@logout"},{"host":null,"methods":["GET","HEAD"],"uri":"register","name":"register","action":"App\Http\Controllers\Auth\RegisterController@showRegistrationForm"},{"host":null,"methods":["POST"],"uri":"register","name":null,"action":"App\Http\Controllers\Auth\RegisterController@register"},{"host":null,"methods":["GET","HEAD"],"uri":"password\/reset","name":"password.request","action":"App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm"},{"host":null,"methods":["POST"],"uri":"password\/email","name":"password.email","action":"App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail"},{"host":null,"methods":["GET","HEAD"],"uri":"password\/reset\/{token}","name":"password.reset","action":"App\Http\Controllers\Auth\ResetPasswordController@showResetForm"},{"host":null,"methods":["POST"],"uri":"password\/reset","name":"password.update","action":"App\Http\Controllers\Auth\ResetPasswordController@reset"},{"host":null,"methods":["GET","HEAD"],"uri":"logout","name":"admin.logout","action":"App\Http\Controllers\Auth\LoginController@logout"},{"host":null,"methods":["GET","HEAD"],"uri":"home","name":"home","action":"App\Http\Controllers\HomeController@index"},{"host":null,"methods":["GET","HEAD"],"uri":"admin\/account","name":"account.index","action":"App\Http\Controllers\AccountController@index"},{"host":null,"methods":["GET","HEAD"],"uri":"admin\/account\/create","name":"account.create","action":"App\Http\Controllers\AccountController@create"},{"host":null,"methods":["GET","HEAD"],"uri":"admin\/account\/{account}\/edit","name":"account.edit","action":"App\Http\Controllers\AccountController@edit"},{"host":null,"methods":["GET","HEAD"],"uri":"admin\/news\/index","name":"news.index","action":"App\Http\Controllers\NewsController@index"},{"host":null,"methods":["GET","HEAD"],"uri":"admin\/news\/edit\/{id}","name":"news.edit","action":"App\Http\Controllers\NewsController@edit"},{"host":null,"methods":["GET","HEAD"],"uri":"admin\/news\/create","name":"news.create","action":"App\Http\Controllers\NewsController@create"},{"host":null,"methods":["GET","HEAD"],"uri":"admin\/news\/json","name":"news.json","action":"App\Http\Controllers\NewsController@getJson"}],
+            routes: [{
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "api\/user",
+                "name": null,
+                "action": "Closure"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "api\/v1\/account",
+                "name": "api.account.index",
+                "action": "App\Http\Controllers\Api\V1\AccountController@index"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "api\/v1\/account",
+                "name": "api.account.store",
+                "action": "App\Http\Controllers\Api\V1\AccountController@store"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "api\/v1\/account\/{account}",
+                "name": "api.account.show",
+                "action": "App\Http\Controllers\Api\V1\AccountController@show"
+            }, {
+                "host": null,
+                "methods": ["PUT", "PATCH"],
+                "uri": "api\/v1\/account\/{account}",
+                "name": "api.account.update",
+                "action": "App\Http\Controllers\Api\V1\AccountController@update"
+            }, {
+                "host": null,
+                "methods": ["DELETE"],
+                "uri": "api\/v1\/account\/{account}",
+                "name": "api.account.destroy",
+                "action": "App\Http\Controllers\Api\V1\AccountController@destroy"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "api\/v1\/news",
+                "name": "api.news.index",
+                "action": "App\Http\Controllers\Api\V1\NewsController@index"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "api\/v1\/news",
+                "name": "api.news.store",
+                "action": "App\Http\Controllers\Api\V1\NewsController@store"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "api\/v1\/news\/{news}",
+                "name": "api.news.show",
+                "action": "App\Http\Controllers\Api\V1\NewsController@show"
+            }, {
+                "host": null,
+                "methods": ["PUT", "PATCH"],
+                "uri": "api\/v1\/news\/{news}",
+                "name": "api.news.update",
+                "action": "App\Http\Controllers\Api\V1\NewsController@update"
+            }, {
+                "host": null,
+                "methods": ["DELETE"],
+                "uri": "api\/v1\/news\/{news}",
+                "name": "api.news.destroy",
+                "action": "App\Http\Controllers\Api\V1\NewsController@destroy"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "\/",
+                "name": null,
+                "action": "Closure"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "login",
+                "name": "login",
+                "action": "App\Http\Controllers\Auth\LoginController@showLoginForm"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "login",
+                "name": null,
+                "action": "App\Http\Controllers\Auth\LoginController@login"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "logout",
+                "name": "logout",
+                "action": "App\Http\Controllers\Auth\LoginController@logout"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "register",
+                "name": "register",
+                "action": "App\Http\Controllers\Auth\RegisterController@showRegistrationForm"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "register",
+                "name": null,
+                "action": "App\Http\Controllers\Auth\RegisterController@register"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "password\/reset",
+                "name": "password.request",
+                "action": "App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "password\/email",
+                "name": "password.email",
+                "action": "App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "password\/reset\/{token}",
+                "name": "password.reset",
+                "action": "App\Http\Controllers\Auth\ResetPasswordController@showResetForm"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "password\/reset",
+                "name": "password.update",
+                "action": "App\Http\Controllers\Auth\ResetPasswordController@reset"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "logout",
+                "name": "admin.logout",
+                "action": "App\Http\Controllers\Auth\LoginController@logout"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "home",
+                "name": "home",
+                "action": "App\Http\Controllers\HomeController@index"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/account",
+                "name": "account.index",
+                "action": "App\Http\Controllers\AccountController@index"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/account\/create",
+                "name": "account.create",
+                "action": "App\Http\Controllers\AccountController@create"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/account\/{account}\/edit",
+                "name": "account.edit",
+                "action": "App\Http\Controllers\AccountController@edit"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/profile\/index",
+                "name": "profile.account",
+                "action": "App\Http\Controllers\ProfileController@index"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/profile\/image",
+                "name": "profile.image",
+                "action": "App\Http\Controllers\ProfileController@getImage"
+            }, {
+                "host": null,
+                "methods": ["POST"],
+                "uri": "admin\/profile\/image",
+                "name": "profile.image",
+                "action": "App\Http\Controllers\ProfileController@postImage"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/news\/index",
+                "name": "news.index",
+                "action": "App\Http\Controllers\NewsController@index"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/news\/edit\/{id}",
+                "name": "news.edit",
+                "action": "App\Http\Controllers\NewsController@edit"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/news\/create",
+                "name": "news.create",
+                "action": "App\Http\Controllers\NewsController@create"
+            }, {
+                "host": null,
+                "methods": ["GET", "HEAD"],
+                "uri": "admin\/news\/json",
+                "name": "news.json",
+                "action": "App\Http\Controllers\NewsController@getJson"
+            }],
             prefix: '',
 
-            route : function (name, parameters, route) {
+            route: function (name, parameters, route) {
                 route = route || this.getByName(name);
 
-                if ( ! route ) {
+                if (!route) {
                     return undefined;
                 }
 
@@ -27,23 +225,23 @@
                 return this.getCorrectUrl(uri);
             },
 
-            toRoute : function (route, parameters) {
+            toRoute: function (route, parameters) {
                 var uri = this.replaceNamedParameters(route.uri, parameters);
-                var qs  = this.getRouteQueryString(parameters);
+                var qs = this.getRouteQueryString(parameters);
 
-                if (this.absolute && this.isOtherHost(route)){
+                if (this.absolute && this.isOtherHost(route)) {
                     return "//" + route.host + "/" + uri + qs;
                 }
 
                 return this.getCorrectUrl(uri + qs);
             },
 
-            isOtherHost: function (route){
+            isOtherHost: function (route) {
                 return route.host && route.host != window.location.hostname;
             },
 
-            replaceNamedParameters : function (uri, parameters) {
-                uri = uri.replace(/\{(.*?)\??\}/g, function(match, key) {
+            replaceNamedParameters: function (uri, parameters) {
+                uri = uri.replace(/\{(.*?)\??\}/g, function (match, key) {
                     if (parameters.hasOwnProperty(key)) {
                         var value = parameters[key];
                         delete parameters[key];
@@ -59,7 +257,7 @@
                 return uri;
             },
 
-            getRouteQueryString : function (parameters) {
+            getRouteQueryString: function (parameters) {
                 var qs = [];
                 for (var key in parameters) {
                     if (parameters.hasOwnProperty(key)) {
@@ -74,7 +272,7 @@
                 return '?' + qs.join('&');
             },
 
-            getByName : function (name) {
+            getByName: function (name) {
                 for (var key in this.routes) {
                     if (this.routes.hasOwnProperty(key) && this.routes[key].name === name) {
                         return this.routes[key];
@@ -82,7 +280,7 @@
                 }
             },
 
-            getByAction : function(action) {
+            getByAction: function (action) {
                 for (var key in this.routes) {
                     if (this.routes.hasOwnProperty(key) && this.routes[key].action === action) {
                         return this.routes[key];
@@ -93,7 +291,7 @@
             getCorrectUrl: function (uri) {
                 var url = this.prefix + '/' + uri.replace(/^\/?/, '');
 
-                if ( ! this.absolute) {
+                if (!this.absolute) {
                     return url;
                 }
 
@@ -101,8 +299,8 @@
             }
         };
 
-        var getLinkAttributes = function(attributes) {
-            if ( ! attributes) {
+        var getLinkAttributes = function (attributes) {
+            if (!attributes) {
                 return '';
             }
 
@@ -117,7 +315,7 @@
         };
 
         var getHtmlLink = function (url, title, attributes) {
-            title      = title || url;
+            title = title || url;
             attributes = getLinkAttributes(attributes);
 
             return '<a href="' + url + '" ' + attributes + '>' + title + '</a>';
@@ -126,7 +324,7 @@
         return {
             // Generate a url for a given controller action.
             // laroute.action('HomeController@getIndex', [params = {}])
-            action : function (name, parameters) {
+            action: function (name, parameters) {
                 parameters = parameters || {};
 
                 return routes.route(name, parameters, routes.getByAction(name));
@@ -134,7 +332,7 @@
 
             // Generate a url for a given named route.
             // laroute.route('routeName', [params = {}])
-            route : function (route, parameters) {
+            route: function (route, parameters) {
                 parameters = parameters || {};
 
                 return routes.route(route, parameters);
@@ -142,7 +340,7 @@
 
             // Generate a fully qualified URL to the given path.
             // laroute.route('url', [params = {}])
-            url : function (route, parameters) {
+            url: function (route, parameters) {
                 parameters = parameters || {};
 
                 return routes.url(route, parameters);
@@ -150,7 +348,7 @@
 
             // Generate a html link to the given url.
             // laroute.link_to('foo/bar', [title = url], [attributes = {}])
-            link_to : function (url, title, attributes) {
+            link_to: function (url, title, attributes) {
                 url = this.url(url);
 
                 return getHtmlLink(url, title, attributes);
@@ -158,7 +356,7 @@
 
             // Generate a html link to the given route.
             // laroute.link_to_route('route.name', [title=url], [parameters = {}], [attributes = {}])
-            link_to_route : function (route, title, parameters, attributes) {
+            link_to_route: function (route, title, parameters, attributes) {
                 var url = this.route(route, parameters);
 
                 return getHtmlLink(url, title, attributes);
@@ -166,7 +364,7 @@
 
             // Generate a html link to the given controller action.
             // laroute.link_to_action('HomeController@getIndex', [title=url], [parameters = {}], [attributes = {}])
-            link_to_action : function(action, title, parameters, attributes) {
+            link_to_action: function (action, title, parameters, attributes) {
                 var url = this.action(action, parameters);
 
                 return getHtmlLink(url, title, attributes);
@@ -183,11 +381,9 @@
         define(function () {
             return laroute;
         });
-    }
-    else if (typeof module === 'object' && module.exports){
+    } else if (typeof module === 'object' && module.exports) {
         module.exports = laroute;
-    }
-    else {
+    } else {
         window.laroute = laroute;
     }
 

@@ -19,11 +19,19 @@ use Faker\Generator as Faker;
 $factory->define(Account::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
+        'gender'=> '1',
+        'birthday' => $faker->dateTimeAD,
+        'birthplace' => $faker->address,
+        'resident' => $faker->address,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => bcrypt('12345678'), // password
+        'password' => '12345678', // password
         'phone' => $faker->phoneNumber,
         'avatar'=> $faker->url,
+        'nationality'=>$faker->address,
+        'daystowork'=>$faker->dateTime,
+        'numbercard'=>'10245157518',
+        'cmnd'=>$faker->swiftBicNumber,
         'remember_token' => Str::random(10),
         'id_role' => random_int(1, 3)
     ];
