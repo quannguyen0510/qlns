@@ -26,6 +26,7 @@ Route::prefix('/admin')->group(function(){
     Route::middleware('auth')->group(function(){
         Route::resource('/account', 'AccountController')->only(['index', 'create', 'edit']);
         Route::get('/role/dashboard','RoleController@index')->name('admin.role.dashboard');
+        Route::get('profile', 'ProfileController@index')->name('profile.index');
         Route::get('/salary','SalaryController@dashboard')->name('admin.salary.dashboard');
     });
 });
