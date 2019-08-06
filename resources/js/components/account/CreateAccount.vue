@@ -2,7 +2,7 @@
 <div>
     <form v-on:submit="create()" enctype="multipart/form-data">
         <a v-bind:href="accountIndex" class="btn btn-default">Back</a>
-        <button class="btn btn-success" @click="UploadImage">Confirm</button>
+        <button class="btn btn-success">Confirm</button>
         <table class="table table-bordered">
             <tbody>
                 <tr>
@@ -32,7 +32,7 @@
                 <tr>
                     <td>Avatar</td>
                     <td>
-                        <input type="file" name="avatar" id="" v-on:change="onImageChange" accept="image/*" class="form-control">
+                        <input type="file" v-on:change="onImageChange" accept="image/*" class="form-control">
                     </td>
                 </tr>
             </tbody>
@@ -42,6 +42,9 @@
 </template>
 <script>
     export default {
+        mounted() {
+            console.log('Component mounted.')
+        },
         data() {
             return {
                 account: {
@@ -49,28 +52,26 @@
                     email: '',
                     password: '',
                     phone: '',
-                    avatar: '',
+                    image: '',
+                    success: ''
                 }
             }
         },
         methods: {
-            onImageChange(e) {
-                let files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-                this.createImage(files[0]);
+            onImageChange(e){
+                console.log(e.target.files[0]);
+                this.image = e.target.files[0];
             },
-            create() {
+            create(event) {
                 event.preventDefault();
                 var app = this;
                 var newAccount = app.account;
-                let reader = new FileReader();
-                let vm = this;
-                reader.onload = (e) => {
-                    vm.image = e.target.result;
-                };
-                reader.readAsDataURL(file);
-                axios.post(app.storeAccount, newAccount)
+                let formData = new FormData();
+                formData.append('image', this.image);
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+                axios.post(app.storeAccount, newAccount, formData, config)
                     .then(function (resp) {
                         window.location = app.accountIndex
                     })
@@ -78,11 +79,6 @@
                         alert("Could not create account");
                     });
             },
-            UploadImage(){
-                axios.post('/public/images',{image: this.image}).then(response => {
-                    console.log(response);
-                });
-            }
         }
     }
 </script>
