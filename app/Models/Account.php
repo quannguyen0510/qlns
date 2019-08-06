@@ -8,7 +8,7 @@ class Account extends Model
     protected $table = "users";
     public  $timestamps = false;
     protected $fillable = [
-        'name', 'email', 'password','phone'
+        'name', 'email', 'password','phone','id_role'
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -49,7 +49,7 @@ class Account extends Model
     }
 
     public function salaries() {
-        return $this->belongsTo(Salary::class, 'id_user', 'id');
+        return $this->hasMany(Salary::class, 'id_user', 'id');
     }
 }
 ?>

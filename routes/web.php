@@ -20,11 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('/admin')->group(function(){
-    Route::resource('/account', 'AccountController')->only(['index', 'create', 'edit']);
-    Route::get('/role/dashboard','RoleController@index')->name('admin.role.dashboard');
+    Route::middleware('auth')->group(function(){
+        Route::resource('/account', 'AccountController')->only(['index', 'create', 'edit']);
+        Route::get('/role/dashboard','RoleController@index')->name('admin.role.dashboard');
+    });
 });
-
-Route::get('trang-chu', 'LayoutController@index');
 
 Route::group(['prefix' => 'news'], function () {
     Route::get('index', 'NewsController@index')->name('news.index');
