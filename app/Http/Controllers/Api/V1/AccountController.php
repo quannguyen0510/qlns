@@ -34,9 +34,16 @@ class AccountController extends Controller
      */
     public function store(StoreAccount $request)
     {
-        $data = array_only($request->toArray(), ['name', 'phone', 'email', 'password']);
-        $result = $this->accountRepository->createAccountSalary($data);
-        return $result;
+        $data = $request->all();
+        if($request->hasFile('avatar')) {
+            $file = Input::file('avatar');
+            $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+            $name = $timestamp. '-' .$file->getClientOriginalExtension();
+            $data['avatar'] = $name;
+            $file->move('public/images/', $name);
+        }
+        $account = $this->accountRepository->create($data);
+        return $account;
     }
 
     /**

@@ -8,7 +8,7 @@ class Account extends Model
     protected $table = "users";
     public  $timestamps = false;
     protected $fillable = [
-        'name', 'email', 'password','phone','id_role'
+        'name', 'email', 'password','phone'
     ];
     /**
      * The attributes that should be hidden for arrays.

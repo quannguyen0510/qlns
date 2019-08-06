@@ -17,6 +17,7 @@
     <link href="{{ asset('admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/css/profile.css') }}" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -107,6 +108,8 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="{{ route('profile.account') }}"> Profile</a></li>
+                                    <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
                             </li>
@@ -181,7 +184,6 @@
                     </nav>
                 </div>
             </div>
-
             <!-- /top navigation -->
 
             <!-- page content -->
@@ -211,3 +213,4 @@
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
+
