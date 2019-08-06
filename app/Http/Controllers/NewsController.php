@@ -17,7 +17,6 @@ class NewsController extends Controller
     public function index()
     {
         $this->authorize('viewAny', News::class);
-
         return view('admin.news.index');
     }
 
@@ -29,7 +28,6 @@ class NewsController extends Controller
     public function create()
     {
         $this->authorize('create', News::class);
-
         return view('admin.news.create');
     }
 
@@ -65,7 +63,6 @@ class NewsController extends Controller
     {
         $news = News::find($id);
         $this->authorize('update', $news);
-
         return view('admin.news.edit');
     }
 

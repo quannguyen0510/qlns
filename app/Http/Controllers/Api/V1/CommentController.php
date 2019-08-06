@@ -6,9 +6,18 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use App\Repositories\CommentRepository;
 
 class CommentController extends Controller
 {
+
+    protected $CommentRepository;
+
+    public function __construct(CommentRepository $CommentRepository)
+    {
+        $this->CommentRepository = $CommentRepository;
+    }
+
     public function index()
     {
 
@@ -16,8 +25,7 @@ class CommentController extends Controller
 
     public function show($id)
     {
-        $comment = Comment::where('id_news', $id)->with('users')->get();
-        return response()->json($comment);
+        return $this->CommentRepository->find($id);
     }
 
     public function update(Request $request, $id)
@@ -29,8 +37,8 @@ class CommentController extends Controller
     {
         $comment = $request->all();
         $comment['created_at'] = Carbon::now();
-        Comment::create($comment);
-        return response()->json(['message'=>'Comment success']);
+        $comment = Comment::create($comment);
+        return response()->json($comment);
     }
 
     public function destroy($id)
