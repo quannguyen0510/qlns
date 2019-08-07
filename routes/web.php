@@ -24,10 +24,15 @@ Route::prefix('/admin')->group(function(){
     Route::middleware('auth')->group(function(){
         Route::resource('/account', 'AccountController')->only(['index', 'create', 'edit']);
         Route::get('/role/dashboard','RoleController@index')->name('admin.role.dashboard');
+        Route::get('/salary','SalaryController@dashboard')->name('admin.salary.dashboard');
     });
 });
 
 Route::group(['prefix' => 'news'], function () {
+    Route::get('/role/dashboard','RoleController@index')->name('admin.role.dashboard');
+});
+
+Route::group(['prefix' => 'news', 'middleware' => 'auth'], function () {
     Route::get('index', 'NewsController@index')->name('news.index');
     Route::get('edit/{id}', 'NewsController@edit')->name('news.edit');
     Route::get('detail/{id}', 'NewsController@detail')->name('news.detail');
