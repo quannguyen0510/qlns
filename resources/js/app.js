@@ -9,7 +9,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueSweetalert2 from 'vue-sweetalert2';
-
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(VueSweetalert2);
@@ -49,7 +48,8 @@ Vue.component('news-edit', require('./components/news/NewsEdit.vue').default);
 Vue.component('news-create', require('./components/news/NewsCreate.vue').default);
 Vue.component('news-detail', require('./components/news/NewsDetail.vue').default);
 
-Vue.component('role-index',require('./components/role/IndexComponent').default)
+Vue.component('role-index',require('./components/role/IndexComponent.vue').default);
+Vue.component('salary-admin-dashboard',require('./components/salary/AdminDashboard.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

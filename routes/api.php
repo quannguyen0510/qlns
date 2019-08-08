@@ -23,4 +23,6 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1', 'as' => 'api.'], funct
     Route::resource('news', 'NewsController', ['except' => ['create', 'edit']]);
     Route::resource('comment', 'CommentController', ['except' => ['create', 'edit']]);
     Route::resource('role', 'RoleController', ['except' => ['create', 'edit']]);
+    Route::post('salary/checkpoint','SalaryController@checkpoint')->name('salary.checkpoint');
+    Route::get('salary/today','SalaryController@getTodaySalaries')->name('salary.today');
 });

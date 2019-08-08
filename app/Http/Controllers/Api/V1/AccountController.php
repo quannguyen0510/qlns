@@ -35,7 +35,7 @@ class AccountController extends Controller
     public function store(StoreAccount $request)
     {
         $data = array_only($request->toArray(), ['name', 'phone', 'email', 'password']);
-        $result = $this->accountRepository->create($data);
+        $result = $this->accountRepository->createAccountSalary($data);
         return $result;
     }
 
@@ -73,7 +73,8 @@ class AccountController extends Controller
         $this->accountRepository->delete($id);
     }
 
-    public function updateRole(UpdateRole $request){
+    public function updateRole(UpdateRole $request)
+    {
         $data  = $request->only(['id','id_role']);
         $result = $this->accountRepository->update($data['id'],$data);
         return $result;
