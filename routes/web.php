@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('/admin')->group(function(){
@@ -33,4 +34,11 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('create', 'NewsController@create')->name('news.create');
     Route::get('json', 'NewsController@getJson')->name('news.json');
     Route::get('comment/{id}', 'NewsController@getComment')->name('news.comment');
+
+    Route::group(['prefix' => 'news'], function () {
+        Route::get('index', 'NewsController@index')->name('news.index');
+        Route::get('edit/{id}', 'NewsController@edit')->name('news.edit');
+        Route::get('create', 'NewsController@create')->name('news.create');
+        Route::get('json', 'NewsController@getJson')->name('news.json');
+    });
 });
