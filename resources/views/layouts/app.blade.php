@@ -37,8 +37,11 @@
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>@if (Auth::user())
+                            <h2>
+                            @if (Auth::user())
                                 {{ Auth::user()->name }}
+                            @else
+                                Stranger
                             @endif
                             </h2>
                         </div>
@@ -49,24 +52,23 @@
 
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        @if(Auth::user())
                         <div class="menu_section">
-                            <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-home"></i> Home </a>
-
-                                </li>
-                                <li><a href="{{ route('account.index') }}"><i class="fa fa-edit"></i> Quản Lý Nhân Viên </a>
-
-                                </li>
-
-                                <li><a><i class="fa fa-table"></i> Bảng Chấm Công </a>
-                                <li><a href="{{route('news.index')}}"><i class="fa fa-edit"></i> Quản Lý Tin Tức </a>
-                                </li>
-
+                                <li><a><i class="fa fa-home"></i> Home </a></li>
+                                @if (Auth::user()->id_role == config('custom.id_Hr') || Auth::user()->id_role == config('custom.id_Admin'))
+                                <li><a href="{{ route('account.index') }}"><i class="fa fa-edit"></i> Quản Lý Nhân Viên </a></li>
+                                @if(Auth::user()->id_role == config('custom.id_Admin'))
+                                <li><a href="{{ route('admin.role.dashboard') }}"><i class="fa fa-edit"></i> Quản Lý Phân Quyền </a></li>
+                                @endif
+                                <li><a href="{{ route('admin.salary.dashboard') }}"><i class="fa fa-table"></i> Bảng Chấm Công </a></li>
+                                <li><a href="{{route('news.index')}}"><i class="fa fa-edit"></i> Quản Lý Tin Tức </a> </li>
+                                @endif
+                                <li><a href=""> Profile</a></li>
+                                <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                             </ul>
                         </div>
-
-
+                        @endif
                     </div>
                     <!-- /sidebar menu -->
 
@@ -99,25 +101,17 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                                <a href="" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                    aria-expanded="false">
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="javascript:;"> Profile</a></li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="badge bg-red pull-right">50%</span>
-                                            <span>Settings</span>
-                                        </a>
-                                    </li>
-                                    <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
                             </li>
 
                             <li role="presentation" class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown"
+                                <a href="" class="dropdown-toggle info-number" data-toggle="dropdown"
                                    aria-expanded="false">
                                     <span>
                                         @if(Auth::user())
@@ -186,6 +180,7 @@
                     </nav>
                 </div>
             </div>
+
             <!-- /top navigation -->
 
             <!-- page content -->
@@ -210,9 +205,8 @@
 <!-- Bootstrap -->
 <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
 <!-- Custom Theme Scripts -->
-<script src="{{ asset('build/js/custom.min.js"') }}"></script>
+<script src="{{ asset('build/js/custom.min.js') }}"></script>
 <script src="{{ asset('js/laroute.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
-

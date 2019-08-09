@@ -62,10 +62,10 @@ class SalaryRepository extends EloquentRepository
         $fund = (($morningCount+$afternoonCount)*0.5 + $fullCount)*$fixed ;
         
         return [
-            "morning" => $m,
-            "afternoon" => $a,
-            "offline" => $o,
-            "fulltime" => $f,
+            "morning" => $morningCount,
+            "afternoon" => $afternoonCount,
+            "offline" => $offlineCount,
+            "fulltime" => $fullCount,
             "fund" => $fund
         ];
     }
