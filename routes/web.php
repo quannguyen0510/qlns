@@ -27,6 +27,7 @@ Route::prefix('/admin')->group(function(){
         Route::resource('/account', 'AccountController')->only(['index', 'create', 'edit']);
         Route::get('/role/dashboard','RoleController@index')->name('admin.role.dashboard');
         Route::get('profile', 'ProfileController@index')->name('profile.index');
+        Route::post('profile', 'ProfileController@update_avatar');
         Route::get('/salary','SalaryController@dashboard')->name('admin.salary.dashboard');
     });
 });

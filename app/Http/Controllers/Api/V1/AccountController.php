@@ -35,8 +35,6 @@ class AccountController extends Controller
     public function store(StoreAccount $request)
     {
         $data = $request->all();
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $imageName);
         $account = $this->accountRepository->create($data);
         return $account;
     }

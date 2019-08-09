@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Meta, title, CSS, favicons, etc. -->
     <link rel="icon" href="images/favicon.ico" type="image/ico"/>
-
+    <link rel="stylesheet" href="{{ asset('admin/cssprofile/bootstrap.min.css') }}">
     <!-- Bootstrap -->
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -203,6 +203,8 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('admin/jsprofile/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/jsprofile/bootstrap.min.js') }}"></script>
 <!-- jQuery -->
 <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
 <!-- Bootstrap -->

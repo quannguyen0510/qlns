@@ -29,12 +29,6 @@
                         <input type="text"  id="" v-model="account.phone" class="form-control">
                     </td>
                 </tr>
-                <tr>
-                    <td>Avatar</td>
-                    <td>
-                        <input type="file" v-on:change="onImageChange" accept="image/*" class="form-control">
-                    </td>
-                </tr>
             </tbody>
         </table>
     </form>
@@ -51,34 +45,23 @@
                     name: '',
                     email: '',
                     password: '',
-                    phone: '',
-                    image: '',
-                    success: ''
+                    phone: ''
                 }
             }
         },
         methods: {
-            onImageChange(e){
-                console.log(e.target.files[0]);
-                this.image = e.target.files[0];
-            },
-            create(event) {
+            create() {
                 event.preventDefault();
                 var app = this;
                 var newAccount = app.account;
-                let formData = new FormData();
-                formData.append('image', this.image);
-                const config = {
-                    headers: { 'content-type': 'multipart/form-data' }
-                }
-                axios.post(app.storeAccount, newAccount, formData, config)
+                axios.post(app.storeAccount, newAccount)
                     .then(function (resp) {
                         window.location = app.accountIndex
                     })
                     .catch(function (resp) {
                         alert("Could not create account");
                     });
-            },
+            }
         }
     }
 </script>
