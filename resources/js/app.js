@@ -50,6 +50,9 @@ Vue.component('news-detail', require('./components/news/NewsDetail.vue').default
 
 Vue.component('role-index',require('./components/role/IndexComponent.vue').default);
 Vue.component('salary-admin-dashboard',require('./components/salary/AdminDashboard.vue').default);
+
+Vue.component('salary-index',require('./components/salary/Index.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

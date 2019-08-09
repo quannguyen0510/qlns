@@ -64,6 +64,7 @@
                                 <li><a href="{{ route('admin.salary.dashboard') }}"><i class="fa fa-table"></i> Bảng Chấm Công </a></li>
                                 <li><a href="{{route('news.index')}}"><i class="fa fa-edit"></i> Quản Lý Tin Tức </a> </li>
                                 @endif
+                                <li><a href="{{route('salary.index')}}"> Work Checker</a></li>
                                 <li><a href=""> Profile</a></li>
                                 <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                             </ul>
@@ -116,7 +117,7 @@
                                     <span>
                                         @if(Auth::user())
                                         {{ Auth::user()->name }}
-                                            @endif
+                                        @endif
                                     </span>
 
                                 </a>
