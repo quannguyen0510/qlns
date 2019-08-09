@@ -6,7 +6,6 @@ use App\Http\Requests\Account\StoreAccount;
 use App\Http\Requests\Account\UpdateAccount;
 use App\Http\Requests\Account\UpdateRole;
 use App\Repositories\AccountRepository;
-use Illuminate\Support\Facades\Input;
 
 class AccountController extends Controller
 {
@@ -36,8 +35,6 @@ class AccountController extends Controller
     public function store(StoreAccount $request)
     {
         $data = $request->all();
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $imageName);
         $account = $this->accountRepository->create($data);
         return $account;
     }
@@ -76,7 +73,8 @@ class AccountController extends Controller
         $this->accountRepository->delete($id);
     }
 
-    public function updateRole(UpdateRole $request){
+    public function updateRole(UpdateRole $request)
+    {
         $data  = $request->only(['id','id_role']);
         $result = $this->accountRepository->update($data['id'],$data);
         return $result;
