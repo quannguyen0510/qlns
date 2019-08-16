@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             $table->mediumText('content');
             $table->unsignedInteger('posted_by');
             $table->timestamps();
-            $table->foreign('posted_by')->references('id')->on('users');
+            $table->foreign('posted_by')->references('id')->on('users')->onDelete("no action");
         });
     }
 

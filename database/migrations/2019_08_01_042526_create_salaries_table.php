@@ -22,7 +22,7 @@ class CreateSalariesTable extends Migration
             $table->integer('total');
             $table->string('checklist');
             $table->primary(['id_user', 'year', 'month']);
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('no action');
             $table->timestamps();
         });
     }

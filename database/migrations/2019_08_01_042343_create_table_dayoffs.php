@@ -16,7 +16,7 @@ class CreateTableDayoffs extends Migration
         Schema::create('day_offs', function (Blueprint $table) {
             $table->unsignedInteger('id_user');
             $table->timestamp('time_off');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('no action')->onUpdate('cascade');
         });
     }
 

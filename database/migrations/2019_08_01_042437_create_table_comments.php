@@ -18,8 +18,8 @@ class CreateTableComments extends Migration
             $table->unsignedInteger('id_user');
             $table->unsignedInteger('id_news');
             $table->string('comment');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_news')->references('id')->on('news');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('no action');
+            $table->foreign('id_news')->references('id')->on('news')->onDelete('no action');
             $table->timestamps();
         });
     }
