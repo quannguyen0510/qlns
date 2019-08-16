@@ -1779,20 +1779,41 @@ __webpack_require__.r(__webpack_exports__);
       account: {
         name: '',
         email: '',
-        password: 'password',
-        phone: ''
+        password: '',
+        phone: '',
+        avatar: ''
       }
     };
   },
   methods: {
+    onImageChange: function onImageChange(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      this.createImage(files[0]);
+    },
     create: function create() {
       event.preventDefault();
       var app = this;
       var newAccount = app.account;
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.image = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
       axios.post(app.storeAccount, newAccount).then(function (resp) {
         window.location = app.accountIndex;
       })["catch"](function (resp) {
         alert("Could not create account");
+      });
+    },
+    UploadImage: function UploadImage() {
+      axios.post('/public/images', {
+        image: this.image
+      }).then(function (response) {
+        console.log(response);
       });
     }
   }
@@ -41930,7 +41951,11 @@ var render = function() {
           [_vm._v("Back")]
         ),
         _vm._v(" "),
-        _c("button", { staticClass: "btn btn-success" }, [_vm._v("Confirm")]),
+        _c(
+          "button",
+          { staticClass: "btn btn-success", on: { click: _vm.UploadImage } },
+          [_vm._v("Confirm")]
+        ),
         _vm._v(" "),
         _c("table", { staticClass: "table table-bordered" }, [
           _c("tbody", [
@@ -41976,7 +42001,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", id: "" },
+                  attrs: { type: "text", id: "", placeholder: "Password" },
                   domProps: { value: _vm.account.password },
                   on: {
                     input: function($event) {
@@ -42046,30 +42071,29 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("tr", [
+              _c("td", [_vm._v("Avatar")]),
+              _vm._v(" "),
+              _c("td", [
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "file",
+                    name: "avatar",
+                    id: "",
+                    accept: "image/*"
+                  },
+                  on: { change: _vm.onImageChange }
+                })
+              ])
+            ])
           ])
         ])
       ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("Avatar")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "file", name: "avatar", id: "", accept: "image/*" }
-        })
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -55184,9 +55208,9 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_1__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -55197,7 +55221,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 
-Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__["default"]);
+Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.mixin({
   data: function data() {
     return {
@@ -55807,8 +55831,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/donhatit/qlns/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/donhatit/qlns/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/laravel/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

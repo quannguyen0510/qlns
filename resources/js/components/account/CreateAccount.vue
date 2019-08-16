@@ -14,7 +14,7 @@
                 <tr>
                     <td>Password</td>
                     <td>
-                        <input type="text"  id="" v-model="account.password" class="form-control">
+                        <input type="text"  id="" v-model="account.password" class="form-control" placeholder="Password">
                     </td>
                 </tr>
                 <tr>
@@ -29,12 +29,6 @@
                         <input type="text"  id="" v-model="account.phone" class="form-control">
                     </td>
                 </tr>
-                <tr>
-                    <td>Avatar</td>
-                    <td>
-                        <input type="file" name="avatar" id="" accept="image/*" class="form-control">
-                    </td>
-                </tr>
             </tbody>
         </table>
     </form>
@@ -42,12 +36,15 @@
 </template>
 <script>
     export default {
+        mounted() {
+            console.log('Component mounted.')
+        },
         data() {
             return {
                 account: {
                     name: '',
                     email: '',
-                    password: 'password',
+                    password: '',
                     phone: ''
                 }
             }

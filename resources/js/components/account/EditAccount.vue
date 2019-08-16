@@ -29,12 +29,7 @@
                         <input type="text"  id="" v-model="account.phone" class="form-control">
                     </td>
                 </tr>
-                <tr>
-                    <td>Avatar</td>
-                    <td>
-                        <input type="file" name="avatar" id="" accept="image/*" class="form-control">
-                    </td>
-                </tr>
+
             </tbody>
         </table>
     </form>

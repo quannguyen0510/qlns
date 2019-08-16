@@ -34,9 +34,9 @@ class AccountController extends Controller
      */
     public function store(StoreAccount $request)
     {
-        $data = array_only($request->toArray(), ['name', 'phone', 'email', 'password']);
-        $result = $this->accountRepository->createAccountSalary($data);
-        return $result;
+        $data = $request->all();
+        $account = $this->accountRepository->create($data);
+        return $account;
     }
 
     /**

@@ -10,13 +10,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Meta, title, CSS, favicons, etc. -->
     <link rel="icon" href="images/favicon.ico" type="image/ico"/>
-
+    <link rel="stylesheet" href="{{ asset('admin/cssprofile/bootstrap.min.css') }}">
     <!-- Bootstrap -->
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="{{ asset('admin/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('build/css/profile.css') }}" rel="stylesheet">
 </head>
 
 <body class="nav-md">
@@ -107,6 +108,8 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="{{ route('profile.index') }}"> Profile</a></li>
+                                    <li><a href="{{ route('admin.logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </li>
                                 </ul>
                             </li>
@@ -181,7 +184,6 @@
                     </nav>
                 </div>
             </div>
-
             <!-- /top navigation -->
 
             <!-- page content -->
@@ -201,6 +203,8 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('admin/jsprofile/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/jsprofile/bootstrap.min.js') }}"></script>
 <!-- jQuery -->
 <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
 <!-- Bootstrap -->
@@ -211,3 +215,4 @@
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
+
