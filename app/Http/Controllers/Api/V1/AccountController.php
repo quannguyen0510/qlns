@@ -35,7 +35,7 @@ class AccountController extends Controller
     public function store(StoreAccount $request)
     {
         $data = $request->all();
-        $account = $this->accountRepository->create($data);
+        $account = $this->accountRepository->createAccountSalary($data);
         return $account;
     }
 

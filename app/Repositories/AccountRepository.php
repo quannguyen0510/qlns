@@ -17,7 +17,6 @@ class AccountRepository extends EloquentRepository
     public function createAccountSalary($data)
     {
         $result = null;
-
         DB::transaction(function() use ($data, $result)
         {
             $account = $this->_model->create($data);
