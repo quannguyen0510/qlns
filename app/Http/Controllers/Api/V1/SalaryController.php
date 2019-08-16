@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Repositories\SalaryRepository;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class SalaryController extends Controller
 {

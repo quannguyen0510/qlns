@@ -9,20 +9,24 @@ class RoleController extends Controller{
     
     protected $roleRepository;
 
-    public function __construct(RoleRepository $roleRepository){
+    public function __construct(RoleRepository $roleRepository)
+    {
         $this->roleRepository = $roleRepository;
     }
 
-    public function index(){
+    public function index()
+    {
         return $this->roleRepository->getAll();
     }
 
-    public function store(StoreRole $request){
+    public function store(StoreRole $request)
+    {
         $result = $this->roleRepository->create($request->all());
         return $result;
     }
     
-    public function destroy($id){
+    public function destroy($id)
+    {
         $this->roleRepository->delete($id);
     }
 

@@ -4,6 +4,7 @@ namespace App\Repositories;
 use App\Repositories\EloquentRepository;
 use App\Models\Salary;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class SalaryRepository extends EloquentRepository
 {
@@ -21,14 +22,18 @@ class SalaryRepository extends EloquentRepository
             ->first();
     }
 
-    public function updateSalaryByYearMonth($id, $month, $year, $checklist)
+    public function updateSalaryByYearMonth($id, $month, $year, $checklist, $fund, $dayWorked)
     {
-        $checklist = json_encode($checklist);
-        $this->getModel()
+        $checklist = json_encode((object)$checklist,true);
+        $this->_model
             ->where('id_user',$id)
             ->where('year',$year)
             ->where('month',$month)
-            ->update($checklist);
+            ->update([
+                'checklist' => $checklist,
+                'day_worked' => $dayWorked,
+                'total' => $fund
+            ]);
     }
 
     public function checkpoint($data)
@@ -56,11 +61,15 @@ class SalaryRepository extends EloquentRepository
         $offlineCount = count(array_filter($checklist,function($v){
             return $v == 0;
         }));
-        $fullCount = count(array_filter(array_splice($checklist,0,$day),function($v){
+
+        $temp = $checklist;
+        $fullCount = count(array_filter(array_splice($temp,0,$day),function($v){
             return $v == 3;
         }));
         $fund = (($morningCount+$afternoonCount)*0.5 + $fullCount)*$fixed ;
-        
+        $dayWorked = $fullCount + $morningCount + $afternoonCount;
+        $this->updateSalaryByYearMonth($id,$month,$year,$checklist,$fund,$dayWorked);
+
         return [
             "morning" => $morningCount,
             "afternoon" => $afternoonCount,
@@ -97,7 +106,8 @@ class SalaryRepository extends EloquentRepository
             $offlineCount = count(array_filter($checklist,function($v){
                 return $v == 0;
             }));
-            $fullCount = count(array_filter(array_splice($checklist,0,$day),function($v){
+            $temp = $checklist;
+            $fullCount = count(array_filter(array_splice($temp,0,$day),function($v){
                 return $v == 3;
             }));
             $fund = (($morningCount+$afternoonCount)*0.5 + $fullCount)*$fixed ;
@@ -109,10 +119,12 @@ class SalaryRepository extends EloquentRepository
                 "afternoon" => $afternoonCount,
                 "offline" => $offlineCount,
                 "fulltime" => $fullCount,
-                "fund" => $fund
+                "fund" => $fund,
+                "checklist" => $checklist
             ];
         }
         return $data;
     }
+
 }
 ?>
